@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'hw5-angular-cards';
+  title = 'TechMagic | Angular Part1';
 }

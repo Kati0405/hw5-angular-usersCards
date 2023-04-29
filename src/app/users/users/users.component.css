@@ -1,0 +1,31 @@
+.users {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.toolbar {
+  display: flex;
+  gap: 10px;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  max-width: 50%;
+}
+
+.card {
+  max-width: 250px;
+  margin: 20px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  background-color: #f4c6be;
+  color: #2e2e3a;
+  text-align: center;
+}
+
+.checkbox {
+  border-radius: 2px;
+  float: right;
+}

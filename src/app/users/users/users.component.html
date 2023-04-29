@@ -1,0 +1,50 @@
+<mat-toolbar class="toolbar">
+  <mat-checkbox (change)="onSelectAllClick($event)"> Select All</mat-checkbox>
+  <button mat-raised-button color="warn" (click)="onDeleteClick()">
+    Delete
+  </button>
+  <button mat-raised-button (click)="onSortClick()">
+    Sort: <mat-icon>unfold_more</mat-icon>
+  </button>
+  <app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
+</mat-toolbar>
+
+<section>
+  <ul class="users">
+    <li *ngFor="let user of users">
+      <mat-card
+        class="card"
+        *ngIf="
+          searchText === '' ||
+          user.firstname.toLowerCase().includes(searchText) ||
+          user.lastname.toLowerCase().includes(searchText)
+        "
+      >
+        <mat-checkbox
+          type="checkbox"
+          class="checkbox"
+          [(ngModel)]="user.isChecked"
+        >
+        </mat-checkbox>
+        <mat-card-header>
+          <mat-card-title>{{
+            user.firstname + ' ' + user.lastname
+          }}</mat-card-title>
+        </mat-card-header>
+        <img
+          mat-card-image
+          src="assets/users-images/{{ user.img }}.jpg"
+          alt="User Image"
+        />
+        <mat-card-content>
+          <p>
+            email: <span>{{ user.email }}</span>
+          </p>
+          <p>
+            phone: <span>{{ user.phone }}</span>
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </li>
+  </ul>
+</section>

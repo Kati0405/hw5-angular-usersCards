@@ -1,0 +1,60 @@
+import { User } from "./user";
+
+export const USERS: User[] =
+    [{
+        id: 1,
+        firstname: "Ian",
+        lastname: "Dooley",
+        email: "mellse0@yale.edu",
+        phone: "517-142-1566",
+        img: 'ian-dooley-d1UPkiFd04A-unsplash',
+        isChecked: false
+    }, {
+        id: 2,
+        firstname: "Ali",
+        lastname: "Morshedlou",
+        email: "fcoombs1@i2i.jp",
+        phone: "901-867-8248",
+        img: 'ali-morshedlou-WMD64tMfc4k-unsplash',
+        isChecked: false
+    }, {
+        id: 3,
+        firstname: "Michael",
+        lastname: "Dam",
+        email: "lclimance2@jigsy.com",
+        phone: "887-689-2771",
+        img: 'michael-dam-mEZ3PoFGs_k-unsplash',
+        isChecked: false
+    }, {
+        id: 4,
+        firstname: "Matheus",
+        lastname: "Ferrero",
+        email: "cpurchall3@php.net",
+        phone: "245-782-6085",
+        img: 'matheus-ferrero-W7b3eDUb_2I-unsplash',
+        isChecked: false
+    }, {
+        id: 5,
+        firstname: "Ayo",
+        lastname: "Ogunseinde",
+        email: "bbonevant4@surveymonkey.com",
+        phone: "898-178-2967",
+        img: 'ayo-ogunseinde-6W4F62sN_yI-unsplash',
+        isChecked: false
+    }, {
+        id: 6,
+        firstname: "Joseph",
+        lastname: "Gonzalez",
+        email: "mcomben5@state.tx.us",
+        phone: "707-204-3629",
+        img: 'joseph-gonzalez-iFgRcqHznqg-unsplash',
+        isChecked: false
+    }, {
+        id: 7,
+        firstname: "Rafaella",
+        lastname: "Mendes",
+        email: "bvanarsdall6@friendfeed.com",
+        phone: "120-301-1194",
+        img: 'rafaella-mendes-diniz-et_78QkMMQs-unsplash',
+        isChecked: false
+    }]
