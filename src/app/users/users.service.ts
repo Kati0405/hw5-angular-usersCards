@@ -1,67 +1,55 @@
 import { Injectable } from '@angular/core';
 import { User } from './user';
-import { USERS } from './users-mock';
-import { MatCheckboxChange } from '@angular/material/checkbox';
+import { ApiService } from './api.service';
+import { ErrorService } from '../error.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
-  public users: User[] = USERS
+  public users: User[] = [];
   order: 'desc' | 'asc' = 'asc'
 
-  constructor() { }
+  constructor(private apiService: ApiService) { }
 
-  getUsers(): User[] {
-    return this.users
+  getUsers() {
+    return this.apiService.get('users')
   }
 
-  deleteUsers(): User[] {
-    return this.users.filter(user => !user.isChecked)
-
+  addUser(payload: Object) {
+    return this.apiService.post('users', payload)
   }
 
-  sortData() {
+  deleteUser(id: number) {
+    return this.apiService.delete('users', id)
+  }
+
+  sortData(users: User[]) {
     if (this.order === 'desc') {
-      let sortedUsers = this.users.sort(function (a, b) {
-        if (a.firstname < b.firstname) {
+      let sortedUsers = users.sort(function (a, b) {
+        if (a.name < b.name) {
           return -1;
         }
-        if (a.firstname > b.firstname) {
+        if (a.name > b.name) {
           return 1;
         }
         return 0;
       });
-      this.users = sortedUsers
+      users = sortedUsers
       this.order = 'asc'
     } else {
-      let sortedUsers = this.users.sort(function (a, b) {
-        if (a.firstname > b.firstname) {
+      let sortedUsers = users.sort(function (a, b) {
+        if (a.name > b.name) {
           return -1;
         }
-        if (a.firstname < b.firstname) {
+        if (a.name < b.name) {
           return 1;
         }
         return 0;
       });
-      this.users = sortedUsers
+      users = sortedUsers
       this.order = 'desc'
     }
   }
 
-  selectAll(e: MatCheckboxChange) {
-    if (e.checked) {
-      this.users = this.users.map((user) => {
-        user.isChecked = true;
-        return user
-      }
-      )
-    } else {
-      this.users = this.users.map((user) => {
-        user.isChecked = false;
-        return user
-      }
-      )
-    }
-  }
 }

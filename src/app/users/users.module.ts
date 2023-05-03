@@ -12,12 +12,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatInputModule } from '@angular/material/input';
 import { SearchComponent } from './search/search.component';
+import { UserFormComponent } from './user-form/user-form.component';
 
 
 @NgModule({
   declarations: [
     UsersComponent,
     SearchComponent,
+    UserFormComponent,
 
   ],
   imports: [
@@ -31,9 +33,11 @@ import { SearchComponent } from './search/search.component';
     MatIconModule,
     MatDividerModule,
     MatInputModule
+
   ],
   exports: [
     UsersComponent,
+
   ]
 })
 export class UsersModule { }

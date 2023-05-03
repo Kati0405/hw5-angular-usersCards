@@ -1,13 +1,16 @@
 <mat-toolbar class="toolbar">
-  <mat-checkbox (change)="onSelectAllClick($event)"> Select All</mat-checkbox>
-  <button mat-raised-button color="warn" (click)="onDeleteClick()">
-    Delete
-  </button>
+  <mat-checkbox (change)="onSelectAllClick($event.checked)">
+    Select All</mat-checkbox
+  >
+  <button mat-raised-button color="warn" (click)="deleteUsers()">Delete</button>
   <button mat-raised-button (click)="onSortClick()">
     Sort: <mat-icon>unfold_more</mat-icon>
   </button>
   <app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
 </mat-toolbar>
+<section>
+  <app-user-form (userAdded)="addUser($event)"></app-user-form>
+</section>
 
 <section>
   <ul class="users">
@@ -15,27 +18,19 @@
       <mat-card
         class="card"
         *ngIf="
-          searchText === '' ||
-          user.firstname.toLowerCase().includes(searchText) ||
-          user.lastname.toLowerCase().includes(searchText)
+          searchText === '' || user.name.toLowerCase().includes(searchText)
         "
       >
         <mat-checkbox
           type="checkbox"
           class="checkbox"
-          [(ngModel)]="user.isChecked"
+          (change)="onUserSelected(user.id, $event.checked)"
+          [checked]="selectedUsersIds.includes(user.id)"
         >
         </mat-checkbox>
         <mat-card-header>
-          <mat-card-title>{{
-            user.firstname + ' ' + user.lastname
-          }}</mat-card-title>
+          <mat-card-title>{{ user.name }}</mat-card-title>
         </mat-card-header>
-        <img
-          mat-card-image
-          src="assets/users-images/{{ user.img }}.jpg"
-          alt="User Image"
-        />
         <mat-card-content>
           <p>
             email: <span>{{ user.email }}</span>

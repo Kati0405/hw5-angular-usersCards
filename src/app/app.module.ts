@@ -6,20 +6,21 @@ import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { UsersModule } from './users/users.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
-
-
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NoopAnimationsModule,
     UsersModule,
-    MatToolbarModule
+    MatToolbarModule,
+    HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

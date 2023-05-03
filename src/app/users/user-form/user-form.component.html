@@ -1,0 +1,68 @@
+<div>
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit(userForm.value)">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input
+        matInput
+        type="text"
+        placeholder="Name"
+        formControlName="name"
+        required
+        minlength="2"
+        maxlength="60"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        type="email"
+        placeholder="Email"
+        formControlName="email"
+        required
+        email
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Phone Number</mat-label>
+      <input
+        matInput
+        type="text"
+        placeholder="Phone Number"
+        formControlName="phone"
+        required
+        pattern="^[0-9]*$"
+      />
+    </mat-form-field>
+    <button
+      mat-raised-button
+      type="submit"
+      color="basic"
+      [disabled]="userForm.invalid"
+    >
+      Add
+    </button>
+  </form>
+  <div
+    class="error-container"
+    *ngIf="
+      (name && name.invalid && (name.dirty || name.touched)) ||
+      (email && email.invalid && (email.dirty || email.touched)) ||
+      (phone && phone.invalid && (phone.dirty || phone.touched))
+    "
+  >
+    <div *ngIf="name && name.hasError('required')">Name is required</div>
+    <div *ngIf="name && name.hasError('minlength')">
+      Name must be at least 2 characters long
+    </div>
+    <div *ngIf="name && name.hasError('maxlength')">Name is too long</div>
+    <div *ngIf="email && email.hasError('required')">Email is required</div>
+    <div *ngIf="email && email.hasError('email')">Email is invalid</div>
+    <div *ngIf="phone && phone.hasError('required')">
+      Phone number is required
+    </div>
+    <div *ngIf="phone && phone.hasError('pattern')">
+      Phone should contain only numbers
+    </div>
+  </div>
+</div>
